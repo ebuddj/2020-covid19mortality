@@ -4,7 +4,7 @@
 
 ## Weekly mortality
 
-This project compares the average weekly cumulative mortality in European countries between 2010 and 2019 to weekly cumulative mortality in 2020.
+This project compares the average weekly cumulative mortality in European countries between 2010 and 2019 to the weekly cumulative mortality in 2020.
 
 We see that in many countries the mortality went up during the first wave of Covid-19 (i.e. France, Italy, Spain) but respectively there is no significant sign of higher mortality numbers (i.e. Baltic countries, Norway, Montenegro).
 
