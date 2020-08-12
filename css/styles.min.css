@@ -1,3 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500.css);
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.app___2khK2 {
+  font-family: Roboto;
+  margin: auto auto auto auto;
+  padding-top: 20px;
+  position: relative;
+  width: 95%;
+}
+.app___2khK2 h3 {
+  font-size: 40px;
+  margin: 0 0 10px 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.app___2khK2 .chart_container___3Jzlm {
+  clear: both;
+  height: 100%;
+  margin: auto auto;
+  width: 100%;
+}
 /* General styles */
 .clearfix___1yHqr {
   zoom: 1;
