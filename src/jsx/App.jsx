@@ -31,19 +31,25 @@ class App extends Component {
     clearInterval(interval);
   }
   getData() {
-    d3.csv('./data/data - 2020_extra_mortality_transpose.csv').then((data) => {
-      
-      let keys = Object.keys(data[0]);
+
+
+    Promise.all([
+      d3.csv('./data/data - 2020_extra_mortality_cumulative_transpose.csv'),
+      d3.csv('./data/data - 2020_extra_mortality_weekly_transpose.csv'),
+    ]).then((data) => {
+      let keys = Object.keys(data[0][0]);
       keys.pop();
 
       this.setState((state, props) => ({
-        data:data
-      }), () => this.createChart(keys, []));
-
+        data_cumulative:data[0],
+        data_weekly:data[1]
+      }), () => this.createChart(keys, [], []));
       this.changeCountry();
+    }).catch((err) => {
+      if (err) throw err;
     });
   }
-  createChart(keys, values) {
+  createChart(keys) {
     let ctx = this.chartRef.current.getContext('2d');
     chart = new Chart(ctx, {
       data:{
@@ -51,12 +57,19 @@ class App extends Component {
         datasets:[{
           backgroundColor:'rgba(27, 64, 152, 0.7)',
           borderColor:'rgba(27, 64, 152, 0.7)',
-          data:values,
-          label:'',
+          data:[],
+          label:'Cumulative',
           fill:false,
           pointRadius:3,
           borderWidth:6,
           type:'line'
+        },{
+          backgroundColor:'rgba(27, 64, 152, 0.7)',
+          borderColor:'rgba(27, 64, 152, 0.7)',
+          data:[],
+          label:'Weekly',
+          borderWidth:0,
+          type:'bar'
         }]
       },
       options:{
@@ -76,6 +89,7 @@ class App extends Component {
             gridLines:{
               display:false
             },
+            offset:true,
             ticks:{
               autoSkip:false,
               fontColor:'#444',
@@ -111,35 +125,42 @@ class App extends Component {
     });
   }
   changeCountry() {
-    let values = Object.values(this.state.data[this.state.current_idx]);
+    let values_cumulative = Object.values(this.state.data_cumulative[this.state.current_idx]);
+    let values_weekly = Object.values(this.state.data_weekly[this.state.current_idx]);
 
     chart.data.datasets[0].data = [];
+    chart.data.datasets[1].data = [];
     chart.update();
-    let current_country = values.pop();
+    let current_country = values_cumulative.pop();
+    values_weekly.pop();
+
     this.setState((state, props) => ({
       current_country:current_country
     }));
 
-    let value = parseInt(values.shift());
+    chart.options.scales.yAxes[0].ticks.suggestedMax = values_cumulative.reduce((a, b) => { return Math.max(a, b); }) + 100;
+    chart.options.scales.yAxes[0].ticks.suggestedMin = values_cumulative.reduce((a, b) => { return Math.min(a, b); }) - 100;
+    
+    let value_cumulative, value_weekly;
 
-    chart.options.scales.yAxes[0].ticks.suggestedMax = values.reduce((a, b) => { return Math.max(a, b); }) + 100;
-    chart.options.scales.yAxes[0].ticks.suggestedMin = values.reduce((a, b) => { return Math.min(a, b); }) - 100;
-            
     interval = setInterval(() => {
-      value = parseInt(values.shift())
-      if (isNaN(value)) {
+      value_cumulative = parseInt(values_cumulative.shift())
+      value_weekly = parseInt(values_weekly.shift())
+
+      if (isNaN(value_cumulative)) {
         clearInterval(interval);
-        if (this.state.current_idx < (this.state.data.length - 1)) {
+        if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
           setTimeout(() => {
             this.setState((state, props) => ({
               current_idx:state.current_idx + 1
             }), () => this.changeCountry());
-          }, 2000);
+          }, 3000);
         }
       }
       else {
-        chart.data.datasets[0].data.push(value);
-        chart.update();
+        chart.data.datasets[0].data.push(value_cumulative);
+        chart.data.datasets[1].data.push(value_weekly);
+        chart.update(0);
       }
     }, 150);
   }
