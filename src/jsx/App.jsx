@@ -125,24 +125,33 @@ class App extends Component {
     });
   }
   changeCountry() {
-    let values_cumulative = Object.values(this.state.data_cumulative[this.state.current_idx]);
-    let values_weekly = Object.values(this.state.data_weekly[this.state.current_idx]);
+    let values_cumulative = Object.values(this.state.data_cumulative[this.state.current_idx]).filter(item => item);
+    let values_weekly = Object.values(this.state.data_weekly[this.state.current_idx]).filter(item => item);
 
+    // Clean chart.
     chart.data.datasets[0].data = [];
     chart.data.datasets[1].data = [];
     chart.update();
+
+    // Remove country name from the array.
     let current_country = values_cumulative.pop();
+    values_weekly.pop();
+
+    // Remove the last week because unreliable.
+    values_cumulative.pop();
     values_weekly.pop();
 
     this.setState((state, props) => ({
       current_country:current_country
     }));
 
-    chart.options.scales.yAxes[0].ticks.suggestedMax = values_cumulative.reduce((a, b) => { return Math.max(a, b); }) + 100;
-    chart.options.scales.yAxes[0].ticks.suggestedMin = values_cumulative.reduce((a, b) => { return Math.min(a, b); }) - 100;
+    // Set minimum and maximum.
+    chart.options.scales.yAxes[0].ticks.suggestedMax = parseInt(values_cumulative.reduce((a, b) => { return Math.max(a, b); })) + 500;
+    chart.options.scales.yAxes[0].ticks.suggestedMin = parseInt(values_cumulative.reduce((a, b) => { return Math.min(a, b); })) - 500;
     
     let value_cumulative, value_weekly;
 
+    // Set interval to push values for each country.
     interval = setInterval(() => {
       value_cumulative = parseInt(values_cumulative.shift())
       value_weekly = parseInt(values_weekly.shift())
