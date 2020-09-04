@@ -34,10 +34,10 @@ class App extends Component {
 
 
     Promise.all([
-      d3.csv('./data/data_mortality - 2020_extra_mortality_cum_transpose.csv'),
-      d3.csv('./data/data_mortality - 2020_extra_mortality_weekly_transpose.csv'),
+      d3.csv('./data/data_mortality.org - 2020_extra_mortality_cum_transpose.csv'),
+      d3.csv('./data/data_mortality.org - 2020_extra_mortality_weekly_transpose.csv'),
     ]).then((data) => {
-      let keys = Object.keys(data[0][0]);
+      let keys = Object.keys(data[0][0]).slice(0, 35);
       keys.pop();
 
       this.setState((state, props) => ({
