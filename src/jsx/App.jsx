@@ -148,7 +148,7 @@ class App extends Component {
           this.setState((state, props) => ({
             current_idx:state.current_idx + 1
           }), () => this.changeCountry());
-        }, 3000);
+        }, 0);
       }
     }
     else {
@@ -178,7 +178,7 @@ class App extends Component {
               this.setState((state, props) => ({
                 current_idx:state.current_idx + 1
               }), () => this.changeCountry());
-            }, 0);
+            }, 3000);
           }
         }
         else {
