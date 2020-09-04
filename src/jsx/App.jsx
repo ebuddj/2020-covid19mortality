@@ -9,6 +9,7 @@ import Chart from 'chart.js';
 
 let chart, interval;
 
+// https://www.rdocumentation.org/packages/demography/versions/1.22/topics/hmd
 const countryCodes = {AUS:'Australia',AUT:'Austria',BLR:'Belarus',BEL:'Belgium',BGR:'Bulgaria',CAN:'Canada',CHL:'Chile',CZE:'Czech Republic',DNK:'Denmark',EST:'Estonia',FIN:'Finland',FRATNP:'France',DEUTNP:'Germany',GRC:'Greece',HUN:'Hungary',ISL:'Iceland',IRL:'Ireland',ISR:'Israel',ITA:'Italy',JPN:'Japan',LVA:'Latvia',LTU:'Lithuania',LUX:'Luxembourg',NLD:'Netherlands',NZL_NP:'New Zealand',NOR:'Norway',POL:'Poland',PRT:'Portugal',RUS:'Russia',SVK:'Slovakia',SVN:'Slovenia',ESP:'Spain',SWE:'Sweden',CHE:'Switzerland',TWN:'Taiwan',GBRTENW:'England & Wales',GBR_SCO:'Scotland',USA:'U.S.A.',UKR:'Ukraine'};
 
 
@@ -139,7 +140,8 @@ class App extends Component {
     values_weekly.pop();
 
     // Test if country has no data.
-    if (values_cumulative[0] == 'undefined') {
+    if (typeof values_cumulative[0] !== 'string') {
+      console.log('täällä')
       clearInterval(interval);
       if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
         setTimeout(() => {
@@ -149,43 +151,43 @@ class App extends Component {
         }, 0);
       }
     }
-    
-    // Remove the last week because unreliable.
-    values_cumulative.pop();
-    values_weekly.pop();
+    else {
+      // Remove the last week because unreliable.
+      values_cumulative.pop();
+      values_weekly.pop();
 
-    this.setState((state, props) => ({
-      current_country:countryCodes[current_country]
-    }));
+      this.setState((state, props) => ({
+        current_country:countryCodes[current_country]
+      }));
 
+      // Set minimum and maximum.
+      chart.options.scales.yAxes[0].ticks.suggestedMax = parseInt(values_cumulative.reduce((a, b) => { return Math.max(a, b); })) + 500;
+      chart.options.scales.yAxes[0].ticks.suggestedMin = parseInt(values_cumulative.reduce((a, b) => { return Math.min(a, b); })) - 500;
+      
+      let value_cumulative, value_weekly;
 
-    // Set minimum and maximum.
-    chart.options.scales.yAxes[0].ticks.suggestedMax = parseInt(values_cumulative.reduce((a, b) => { return Math.max(a, b); })) + 500;
-    chart.options.scales.yAxes[0].ticks.suggestedMin = parseInt(values_cumulative.reduce((a, b) => { return Math.min(a, b); })) - 500;
-    
-    let value_cumulative, value_weekly;
+      // Set interval to push values for each country.
+      interval = setInterval(() => {
+        value_cumulative = parseInt(values_cumulative.shift())
+        value_weekly = parseInt(values_weekly.shift())
 
-    // Set interval to push values for each country.
-    interval = setInterval(() => {
-      value_cumulative = parseInt(values_cumulative.shift())
-      value_weekly = parseInt(values_weekly.shift())
-
-      if (isNaN(value_cumulative)) {
-        clearInterval(interval);
-        if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
-          setTimeout(() => {
-            this.setState((state, props) => ({
-              current_idx:state.current_idx + 1
-            }), () => this.changeCountry());
-          }, 3000);
+        if (isNaN(value_cumulative)) {
+          clearInterval(interval);
+          if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
+            setTimeout(() => {
+              this.setState((state, props) => ({
+                current_idx:state.current_idx + 1
+              }), () => this.changeCountry());
+            }, 0);
+          }
         }
-      }
-      else {
-        chart.data.datasets[0].data.push(value_cumulative);
-        chart.data.datasets[1].data.push(value_weekly);
-        chart.update(0);
-      }
-    }, 150);
+        else {
+          chart.data.datasets[0].data.push(value_cumulative);
+          chart.data.datasets[1].data.push(value_weekly);
+          chart.update(0);
+        }
+      }, 1);
+    }
   }
   // shouldComponentUpdate(nextProps, nextState) {}
   // static getDerivedStateFromProps(props, state) {}

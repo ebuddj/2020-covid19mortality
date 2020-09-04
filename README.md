@@ -14,7 +14,7 @@ On the other hand in Spain the mortality is much higher showing +26,011 more dea
 
 Countries included in the dataset: Austria, Belgium, Bulgaria, Czech Republic, Denmark, England & Wales, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Israel, Italy, Latvia, Lithuania, Luxembourg, Netherlands, Norway, Poland, Portugal, Russia, Scotland, Slovakia, Slovenia, Spain, Sweden, Switzerland and U.S.A.
 
-See `data/data_mortality.xlsx` for complete dataset. 
+See `data/data_mortality.xlsx` for complete dataset.
 
 ### Mortality data collected by media
 
