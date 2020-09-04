@@ -138,16 +138,8 @@ class App extends Component {
     let current_country = values_cumulative.pop();
     values_weekly.pop();
 
-    // Remove the last week because unreliable.
-    values_cumulative.pop();
-    values_weekly.pop();
-
-    this.setState((state, props) => ({
-      current_country:countryCodes[current_country]
-    }));
-
-    console.log(values_cumulative[0])
-    if (values_cumulative[0] === undefined) {
+    // Test if country has no data.
+    if (values_cumulative[0] == 'undefined') {
       clearInterval(interval);
       if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
         setTimeout(() => {
@@ -157,6 +149,15 @@ class App extends Component {
         }, 0);
       }
     }
+    
+    // Remove the last week because unreliable.
+    values_cumulative.pop();
+    values_weekly.pop();
+
+    this.setState((state, props) => ({
+      current_country:countryCodes[current_country]
+    }));
+
 
     // Set minimum and maximum.
     chart.options.scales.yAxes[0].ticks.suggestedMax = parseInt(values_cumulative.reduce((a, b) => { return Math.max(a, b); })) + 500;
