@@ -145,6 +145,17 @@ class App extends Component {
       current_country:current_country
     }));
 
+    if (values_cumulative[0] === '') {
+      clearInterval(interval);
+      if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
+        setTimeout(() => {
+          this.setState((state, props) => ({
+            current_idx:state.current_idx + 1
+          }), () => this.changeCountry());
+        }, 0);
+      }
+    }
+
     // Set minimum and maximum.
     chart.options.scales.yAxes[0].ticks.suggestedMax = parseInt(values_cumulative.reduce((a, b) => { return Math.max(a, b); })) + 500;
     chart.options.scales.yAxes[0].ticks.suggestedMin = parseInt(values_cumulative.reduce((a, b) => { return Math.min(a, b); })) - 500;
