@@ -148,7 +148,7 @@ class App extends Component {
           this.setState((state, props) => ({
             current_idx:state.current_idx + 1
           }), () => this.changeCountry());
-        }, 0);
+        }, 3000);
       }
     }
     else {
@@ -186,7 +186,7 @@ class App extends Component {
           chart.data.datasets[1].data.push(value_weekly);
           chart.update(0);
         }
-      }, 1);
+      }, 150);
     }
   }
   // shouldComponentUpdate(nextProps, nextState) {}
