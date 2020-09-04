@@ -141,7 +141,6 @@ class App extends Component {
 
     // Test if country has no data.
     if (typeof values_cumulative[0] !== 'string') {
-      console.log('täällä')
       clearInterval(interval);
       if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
         setTimeout(() => {
