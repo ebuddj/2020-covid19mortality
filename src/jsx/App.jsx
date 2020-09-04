@@ -9,6 +9,9 @@ import Chart from 'chart.js';
 
 let chart, interval;
 
+const countryCodes = {AUS:'Australia',AUT:'Austria',BLR:'Belarus',BEL:'Belgium',BGR:'Bulgaria',CAN:'Canada',CHL:'Chile',CZE:'Czech Republic',DNK:'Denmark',EST:'Estonia',FIN:'Finland',FRATNP:'France',DEUTNP:'Germany',GRC:'Greece',HUN:'Hungary',ISL:'Iceland',IRL:'Ireland',ISR:'Israel',ITA:'Italy',JPN:'Japan',LVA:'Latvia',LTU:'Lithuania',LUX:'Luxembourg',NLD:'Netherlands',NZL_NP:'New Zealand',NOR:'Norway',POL:'Poland',PRT:'Portugal',RUS:'Russia',SVK:'Slovakia',SVN:'Slovenia',ESP:'Spain',SWE:'Sweden',CHE:'Switzerland',TWN:'Taiwan',GBRTENW:'England & Wales',GBR_SCO:'Scotland',USA:'U.S.A.',UKR:'Ukraine'};
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -31,8 +34,6 @@ class App extends Component {
     clearInterval(interval);
   }
   getData() {
-
-
     Promise.all([
       d3.csv('./data/data_mortality.org - 2020_extra_mortality_cum_transpose.csv'),
       d3.csv('./data/data_mortality.org - 2020_extra_mortality_weekly_transpose.csv'),
@@ -142,7 +143,7 @@ class App extends Component {
     values_weekly.pop();
 
     this.setState((state, props) => ({
-      current_country:current_country
+      current_country:countryCodes[current_country]
     }));
 
     if (values_cumulative[0] === '') {
