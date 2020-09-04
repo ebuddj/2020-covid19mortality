@@ -14,8 +14,24 @@ On the other hand in Spain the mortality is much higher showing +26,011 more dea
 
 See `data/data.xlsx` for complete dataset.
 
+### Mortality data collected by media
+
+* [The Economist](https://github.com/TheEconomist/covid-19-excess-deaths-tracker) 
+* [The New York Times](https://github.com/nytimes/covid-19-data/tree/master/excess-deaths)
+* [The Financial Times](https://github.com/Financial-Times/coronavirus-excess-mortality-data)
+
+### Studies and articles
+
+* [Estimating the burden of COVID-19 on mortality, life expectancy and lifespan
+inequality in England and Wales: A population-level analysis](https://www.medrxiv.org/content/10.1101/2020.07.16.20155077v1.full.pdf)
+* [¿Qué nos dicen las actas de defunción de la CDMX?](https://datos.nexos.com.mx/?p=1388)
+** [Vähäinen testaus ja epidemian piilottelu vääristävät maailman koronatilastoja – iso osa kuolemista ei päädy niihin](https://yle.fi/uutiset/3-11374008)
+* [A pandemic primer on excess mortality statistics and their comparability across countries](https://ourworldindata.org/covid-excess-mortality)
+
 **Sources**
 * [Eurostat](https://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_r_mwk_ts&lang=en)
+* [Office for National Statistics](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales)
+* [The Human Mortality Database](https://www.mortality.org/)
 
 **EBU links**
 * []()
