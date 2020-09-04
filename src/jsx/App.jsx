@@ -146,7 +146,8 @@ class App extends Component {
       current_country:countryCodes[current_country]
     }));
 
-    if (values_cumulative[0] === '') {
+    console.log(values_cumulative[0])
+    if (values_cumulative[0] === undefined) {
       clearInterval(interval);
       if (this.state.current_idx < (this.state.data_cumulative.length - 1)) {
         setTimeout(() => {
