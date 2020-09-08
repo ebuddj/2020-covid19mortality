@@ -4,19 +4,21 @@
 
 ## Weekly mortality
 
-This project compares the average weekly cumulative mortality in European countries between 2010 and 2019 to the weekly cumulative mortality in 2020.
+This project compares the average weekly cumulative mortality in selected countries between 2015 and 2019 to the weekly mortality in 2020.
 
-We see that in many countries (i.e. France, Italy, Spain) the mortality went up during the first wave of Covid-19 but respectively in other countries (i.e. Baltic countries, Norway, Montenegro) there is no significant sign of higher mortality numbers.
+For example in France the cumulative mortality in 2020 compared to 2015–2019 was at the worst after week 26, rising up to +22,646. Respectively in Spain the mortality is showing +44,635 deaths up to week 33 in year 2020 than in average between 2015 and 2019.
 
-For example in France at worst the cumulative mortality was at worst after week 17, rising up to +15,099, while the latest data from week 29 shows that the cumulative mortality is -1,126 meaning that less people have died in France in 2020 than in average compared to the previous decade.
+Respectively other countries have survived with much less extra mortality. These countries include for example the Baltic Countries, Norway and Finland.
 
-On the other hand in Spain the mortality is much higher showing +26,011 more deaths up to week 29 in year 2020 than in average between 2010 and 2019.
+In the animation the bars show the weekly comparision and the line represents the cumulative value.
 
 Countries included in the dataset: Austria, Belgium, Bulgaria, Czech Republic, Denmark, England & Wales, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Israel, Italy, Latvia, Lithuania, Luxembourg, Netherlands, Norway, Poland, Portugal, Scotland, Slovakia, Slovenia, Spain, Sweden, Switzerland and U.S.A.
 
 Croatia and Russia only have data preceding 2020.
 
 See `data/data_mortality.xlsx` for complete dataset.
+
+Data has been updated 2020-09-04.
 
 ### Mortality data collected by media
 
@@ -41,7 +43,7 @@ inequality in England and Wales: A population-level analysis](https://www.medrxi
 * []()
 
 **Used by**
-* []()
+* [Yle/Finland]()
 
 ## How to use
 
