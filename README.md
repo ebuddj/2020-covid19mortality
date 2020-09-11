@@ -6,11 +6,13 @@
 
 This project compares the average weekly cumulative mortality in selected countries between 2015 and 2019 to the weekly mortality in 2020.
 
+The numbers show the total mortality in the country, not just due to COVID-19. The numbers don't take into account the cause of death. The data comes from The Human Mortality Database https://www.mortality.org
+
 For example in France the cumulative mortality in 2020 compared to 2015–2019 was at the worst after week 26, rising up to +22,646. Respectively in Spain the mortality is showing +44,635 deaths up to week 33 in year 2020 than in average between 2015 and 2019.
 
 Respectively other countries have survived with much less extra mortality. These countries include for example the Baltic Countries, Norway and Finland.
 
-In the animation the bars show the weekly comparision and the line represents the cumulative value.
+In the animation the bars show the weekly comparison and the line represents the cumulative value.
 
 Countries included in the dataset: Austria, Belgium, Bulgaria, Czech Republic, Denmark, England & Wales, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Israel, Italy, Latvia, Lithuania, Luxembourg, Netherlands, Norway, Poland, Portugal, Scotland, Slovakia, Slovenia, Spain, Sweden, Switzerland and U.S.A.
 
@@ -28,8 +30,7 @@ Data has been updated 2020-09-04.
 
 ### Studies and articles
 
-* [Estimating the burden of COVID-19 on mortality, life expectancy and lifespan
-inequality in England and Wales: A population-level analysis](https://www.medrxiv.org/content/10.1101/2020.07.16.20155077v1.full.pdf)
+* [Estimating the burden of COVID-19 on mortality, life expectancy and lifespan inequality in England and Wales: A population-level analysis](https://www.medrxiv.org/content/10.1101/2020.07.16.20155077v1.full.pdf)
 * [¿Qué nos dicen las actas de defunción de la CDMX?](https://datos.nexos.com.mx/?p=1388)
 ** [Vähäinen testaus ja epidemian piilottelu vääristävät maailman koronatilastoja – iso osa kuolemista ei päädy niihin](https://yle.fi/uutiset/3-11374008)
 * [A pandemic primer on excess mortality statistics and their comparability across countries](https://ourworldindata.org/covid-excess-mortality)
@@ -43,7 +44,7 @@ inequality in England and Wales: A population-level analysis](https://www.medrxi
 * []()
 
 **Used by**
-* [Yle/Finland]()
+* [Yle/Finland](https://yle.fi/uutiset/3-11516123)
 
 ## How to use
 
