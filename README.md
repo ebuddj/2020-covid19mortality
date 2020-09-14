@@ -41,7 +41,7 @@ Data has been updated 2020-09-04.
 * [The Human Mortality Database](https://www.mortality.org/)
 
 **EBU links**
-* []()
+* [News Exchange](https://news-exchange.ebu.ch/item_detail/38b5fd8b23f4d758a1b6222e31e4756f/2020_21041220)
 
 **Used by**
 * [Yle/Finland](https://yle.fi/uutiset/3-11516123)
