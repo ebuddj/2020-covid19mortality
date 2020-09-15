@@ -32,7 +32,7 @@ Data has been updated 2020-09-04.
 
 * [Estimating the burden of COVID-19 on mortality, life expectancy and lifespan inequality in England and Wales: A population-level analysis](https://www.medrxiv.org/content/10.1101/2020.07.16.20155077v1.full.pdf)
 * [¿Qué nos dicen las actas de defunción de la CDMX?](https://datos.nexos.com.mx/?p=1388)
-** [Vähäinen testaus ja epidemian piilottelu vääristävät maailman koronatilastoja – iso osa kuolemista ei päädy niihin](https://yle.fi/uutiset/3-11374008)
+  * [Vähäinen testaus ja epidemian piilottelu vääristävät maailman koronatilastoja – iso osa kuolemista ei päädy niihin](https://yle.fi/uutiset/3-11374008)
 * [A pandemic primer on excess mortality statistics and their comparability across countries](https://ourworldindata.org/covid-excess-mortality)
 
 **Sources**
