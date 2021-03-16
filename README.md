@@ -45,6 +45,7 @@ Data has been updated 2020-09-04.
 
 **Used by**
 * [Yle/Finland](https://yle.fi/uutiset/3-11516123)
+* [Yle/Finland](https://yle.fi/uutiset/3-11829569)
 
 ## How to use
 
